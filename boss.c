@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
+#include <ctype.h>
+#include <sys/time.h>
 //#include <math.h>
 
 #define BOF_STR_MAX 200
@@ -188,13 +190,13 @@ int main(int argc, char **argv)
 
   build_boss(bof2, bof2, hash2);
 
-  printf("build_boss: str1 '%s', trunk str1 '%s', hash1 '%s', time %d us\n", 
+  printf("build_boss: str1 '%s', trunk str1 '%s', hash1 '%s', time %ld us\n", 
 	 bof1, bof1, hash1, (tv2.tv_sec-tv1.tv_sec)*1000000+tv2.tv_usec-tv1.tv_usec);
 
   gettimeofday(&tv1, NULL);
   cmp_boss(hash1, hash2, &cdist2, &edist2);
   gettimeofday(&tv2, NULL);
 
-  printf("cmp_boss: time %d us\n", 
+  printf("cmp_boss: time %ld us\n", 
 	 (tv2.tv_sec-tv1.tv_sec)*1000000+tv2.tv_usec-tv1.tv_usec);
 }
